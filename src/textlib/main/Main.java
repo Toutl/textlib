@@ -1,20 +1,41 @@
 package textlib.main;
 
-import textlib.docs.Corpus;
-import textlib.readers.CorpusBuilder;
-import textlib.readers.TxtCorpusBuilder;
+import java.util.ArrayList;
+
+import textlib.cleaners.SimpleCleaner;
+import textlib.builders.TxtBuilder;
+import textlib.models.Corpus;
+import textlib.models.Document;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        String filesDirectory = "/home/toutl/icd/poo/project/files";
-        String[] fileNames = { "pg11.txt", "pg1342.txt", "pg2701.txt", "pg8492.txt", "pg84.txt" };
+        // path
+        String filesDirectory = "/home/toutl/icd/poo/project/files/";
 
-        CorpusBuilder txtBuilder = new TxtCorpusBuilder();
+        // build the corpus
+        Corpus myCorpus = null;
+        TxtBuilder builder = new TxtBuilder();
+        myCorpus = builder.readFromDirectory(filesDirectory);
 
-        Corpus corpus1 = txtBuilder.readFromDirectory(filesDirectory);
-        Corpus corpus2 = txtBuilder.readFromList(fileNames);
+        // clean the corpus
+        SimpleCleaner cleaner = new SimpleCleaner();
+        cleaner.cleanCorpus(myCorpus);
+
+        // vectorize the corpus
+
+        // check the corpus
+        ArrayList<String> docNames = new ArrayList<>();
+        for (Document d : myCorpus.getDocuments())
+            docNames.add(d.getFileName());
+        System.out.printf("\n%s: %s\n\n", myCorpus, docNames);
+
+        // Document tryDoc = myCorpus.get(5);
+        // System.out.println(tryDoc);
+
+        // // System.out.printf("--%s--\n", tryDoc.getRaw());
+        // System.out.printf("++%s++\n", tryDoc.getCleaned());
 
     }
 

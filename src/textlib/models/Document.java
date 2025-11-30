@@ -1,4 +1,4 @@
-package textlib.docs;
+package textlib.models;
 
 import java.util.Vector;
 
@@ -28,27 +28,27 @@ public class Document {
     }
 
     public Vector<Integer> getVectorized() {
-        return getVectorized();
+        return this.vectorized;
     }
 
     // setters
-    protected void setCleaned(String cleaned) {
+    public void setCleaned(String cleaned) {
         if (!isCleaned())
             this.cleaned = cleaned;
     }
 
-    protected void setVectorized(Vector<Integer> vectorized) {
+    public void setVectorized(Vector<Integer> vectorized) {
         if (!isVectorized())
             this.vectorized = vectorized;
     }
 
     // more
     public boolean isCleaned() {
-        return this.cleaned == null;
+        return this.cleaned != null;
     }
 
     public boolean isVectorized() {
-        return this.vectorized == null;
+        return this.vectorized != null;
     }
 
     @Override

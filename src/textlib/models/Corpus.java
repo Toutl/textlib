@@ -1,10 +1,10 @@
-package textlib.docs;
+package textlib.models;
 
 import java.util.ArrayList;
 
 public class Corpus {
 
-    private ArrayList<Document> documents;
+    protected ArrayList<Document> documents;
 
     public Corpus() {
         this.documents = new ArrayList<>();
@@ -36,6 +36,11 @@ public class Corpus {
 
     public int size() {
         return documents.size();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Corpus with %d files", this.size());
     }
 
 }
