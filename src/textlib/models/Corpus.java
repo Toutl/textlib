@@ -1,10 +1,12 @@
 package textlib.models;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class Corpus {
 
     protected ArrayList<Document> documents;
+    protected Set<String> vocabulary = null;
 
     public Corpus() {
         this.documents = new ArrayList<>();
@@ -18,8 +20,21 @@ public class Corpus {
         return documents;
     }
 
+    public Set<String> getVocabulary() {
+        if (this.hasVocabulary())
+            return this.vocabulary;
+
+        System.err.println("No vocabulary yet");
+        return null;
+    }
+
     public void add(Document newDocument) {
         documents.add(newDocument);
+    }
+
+    public void setVocabulary(Set<String> vocabulary) {
+        if (!this.hasVocabulary())
+            this.vocabulary = vocabulary;
     }
 
     public static Corpus combine(Corpus c1, Corpus c2) {
@@ -36,6 +51,10 @@ public class Corpus {
 
     public int size() {
         return documents.size();
+    }
+
+    public boolean hasVocabulary() {
+        return this.vocabulary != null;
     }
 
     @Override

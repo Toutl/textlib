@@ -1,13 +1,13 @@
 package textlib.models;
 
-import java.util.Vector;
+import java.util.Map;
 
 public class Document {
 
     protected String fileName;
     protected String raw;
     protected String cleaned = null;
-    protected Vector<Integer> vectorized = null;
+    protected Map<String, Double> vectorized = null;
 
     public Document(String fileName, String raw) {
         this.fileName = fileName;
@@ -27,18 +27,18 @@ public class Document {
         return this.cleaned;
     }
 
-    public Vector<Integer> getVectorized() {
+    public Map<String, Double> getVectorized() {
         return this.vectorized;
     }
 
     // setters
     public void setCleaned(String cleaned) {
-        if (!isCleaned())
+        if (!this.isCleaned())
             this.cleaned = cleaned;
     }
 
-    public void setVectorized(Vector<Integer> vectorized) {
-        if (!isVectorized())
+    public void setVectorized(Map<String, Double> vectorized) {
+        if (!this.isVectorized())
             this.vectorized = vectorized;
     }
 
@@ -56,8 +56,8 @@ public class Document {
         return String.format(
                 "File: %s\n Cleaned: %s\n Vectorized: %s",
                 this.fileName,
-                isCleaned() ? "yes" : "no",
-                isVectorized() ? "yes" : "no");
+                this.isCleaned() ? "yes" : "no",
+                this.isVectorized() ? "yes" : "no");
     }
 
 }
