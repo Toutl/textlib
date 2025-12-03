@@ -6,14 +6,19 @@ import java.util.Set;
 
 import textlib.models.Document;
 
-public class OneHotVectorizer extends BaseVectorizer {
+public class CountVectorizer extends BaseVectorizer {
 
     protected void vectorizeDocument(Document document, Set<String> vocabulary) {
         Map<String, Double> vectorized = new HashMap<>();
-        String text = document.isCleaned() ? document.getCleaned() : document.getRaw();
 
         for (String word : vocabulary) {
-            vectorized.put(word, text.contains(word) ? 1.0 : 0.0);
+            vectorized.put(word, 0.0);
+        }
+        
+        String text = document.isCleaned() ? document.getCleaned() : document.getRaw();
+
+        for (String word : text.split("\\s+")) {
+            vectorized.put(word, vectorized.get(word) + 1);
         }
 
         document.setVectorized(vectorized);

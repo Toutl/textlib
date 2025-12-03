@@ -1,12 +1,14 @@
 package textlib.models;
 
 import java.util.Map;
+import java.util.Set;
 
 public class Document {
 
     protected String fileName;
     protected String raw;
     protected String cleaned = null;
+    protected Set<String> uniqueTerms = null;
     protected Map<String, Double> vectorized = null;
 
     public Document(String fileName, String raw) {
@@ -27,6 +29,10 @@ public class Document {
         return this.cleaned;
     }
 
+    public Set<String> getUniqueTerms() {
+        return this.uniqueTerms;
+    }
+
     public Map<String, Double> getVectorized() {
         return this.vectorized;
     }
@@ -35,6 +41,11 @@ public class Document {
     public void setCleaned(String cleaned) {
         if (!this.isCleaned())
             this.cleaned = cleaned;
+    }
+
+    public void setUniqueTerms(Set<String> uniqueTerms) {
+        if (!this.hasUniqueTerms())
+            this.uniqueTerms = uniqueTerms;
     }
 
     public void setVectorized(Map<String, Double> vectorized) {
@@ -49,6 +60,10 @@ public class Document {
 
     public boolean isVectorized() {
         return this.vectorized != null;
+    }
+
+    public boolean hasUniqueTerms() {
+        return this.uniqueTerms != null;
     }
 
     @Override

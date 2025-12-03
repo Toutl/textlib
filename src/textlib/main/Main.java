@@ -6,8 +6,10 @@ import textlib.builders.TxtBuilder;
 import textlib.cleaners.SimpleCleaner;
 import textlib.models.Corpus;
 import textlib.models.Document;
+import textlib.vectorizers.BaseVectorizer;
+import textlib.vectorizers.CountVectorizer;
 import textlib.vectorizers.OneHotVectorizer;
-import textlib.vectorizers.Vectorizer;
+import textlib.vectorizers.TfidfVectorizer;
 
 public class Main {
 
@@ -25,22 +27,30 @@ public class Main {
         cleaner.cleanCorpus(myCorpus);
 
         // vectorize the corpus
-        Vectorizer vectorizer = new OneHotVectorizer();
-        vectorizer.vectorizeCorpus(myCorpus);
+        BaseVectorizer[] vectorizers = {
+                new OneHotVectorizer(),
+                new CountVectorizer(),
+                new TfidfVectorizer(),
+        };
+        vectorizers[2].vectorizeCorpus(myCorpus);
 
         // some checks
         ArrayList<String> docNames = new ArrayList<>();
         for (Document d : myCorpus.getDocuments()) {
             docNames.add(d.getFileName());
         }
-        System.out.printf("\n%s: %s\n\n", myCorpus, docNames);
+        System.out.printf("%s: %s\n", myCorpus, docNames);
 
-        System.out.println(myCorpus.get(0));
+        // System.out.println(myCorpus.get(0));
         System.out.println(myCorpus.get(0).getRaw());
-        System.out.println("\n\n");
+        System.out.println("\n");
         System.out.println(myCorpus.get(0).getCleaned());
-        System.out.println("\n\n");
+        System.out.println("");
+        System.out.println(myCorpus.get(1).getCleaned());
+        System.out.println("\n");
         System.out.println(myCorpus.get(0).getVectorized());
+        System.out.println("");
+        System.out.println(myCorpus.get(1).getVectorized());
 
     }
 

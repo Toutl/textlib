@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -60,7 +61,7 @@ public class SimpleCleaner implements Cleaner {
                 .trim();
 
         document.setCleaned(cleaned);
-
+        document.setUniqueTerms(this.calculateUnique(cleaned));
     }
 
     private String removeGutenbergWrappers(String txt) {
@@ -90,7 +91,7 @@ public class SimpleCleaner implements Cleaner {
         if (this.stopWords != null)
             return;
 
-        Path stopWordsPath = Paths.get("./stopwords/stopwords-" + this.language + ".txt");
+        Path stopWordsPath = Paths.get("./src/resources/stopwords/stopwords-" + this.language + ".txt");
 
         if (!Files.exists(stopWordsPath)) {
             System.err.println("Language stop-words does not exists: " + stopWordsPath.toAbsolutePath());
@@ -119,6 +120,10 @@ public class SimpleCleaner implements Cleaner {
 
         this.stopWords = null;
         this.loadStopWords();
+    }
+
+    public Set<String> calculateUnique(String text) {
+        return new HashSet<>(Arrays.asList(text.split("\\s+")));
     }
 
 }
