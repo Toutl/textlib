@@ -14,11 +14,13 @@ public class CountVectorizer extends BaseVectorizer {
         for (String word : vocabulary) {
             vectorized.put(word, 0.0);
         }
-        
+
         String text = document.isCleaned() ? document.getCleaned() : document.getRaw();
 
         for (String word : text.split("\\s+")) {
-            vectorized.put(word, vectorized.get(word) + 1);
+            if (vectorized.containsKey(word)) {
+                vectorized.put(word, vectorized.get(word) + 1.0);
+            }
         }
 
         document.setVectorized(vectorized);

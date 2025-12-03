@@ -42,12 +42,15 @@ public class Main {
         System.out.printf("%s: %s\n", myCorpus, docNames);
 
         // System.out.println(myCorpus.get(0));
-        System.out.println(myCorpus.get(0).getRaw());
-        System.out.println("\n");
+
+        // System.out.println(myCorpus.get(0).getRaw());
+        // System.out.println("\n");
+
         System.out.println(myCorpus.get(0).getCleaned());
         System.out.println("");
         System.out.println(myCorpus.get(1).getCleaned());
         System.out.println("\n");
+
         System.out.println(myCorpus.get(0).getVectorized());
         System.out.println("");
         System.out.println(myCorpus.get(1).getVectorized());

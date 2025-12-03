@@ -17,6 +17,7 @@ public abstract class BaseVectorizer {
 
             Collections.addAll(vocabulary, text.split("\\s+"));
         }
+        vocabulary.remove("");
 
         corpus.setVocabulary(vocabulary);
     }
