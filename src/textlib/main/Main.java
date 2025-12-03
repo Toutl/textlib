@@ -36,6 +36,11 @@ public class Main {
         System.out.printf("\n%s: %s\n\n", myCorpus, docNames);
 
         System.out.println(myCorpus.get(0));
+        System.out.println(myCorpus.get(0).getRaw());
+        System.out.println("\n\n");
+        System.out.println(myCorpus.get(0).getCleaned());
+        System.out.println("\n\n");
+        System.out.println(myCorpus.get(0).getVectorized());
 
     }
 
