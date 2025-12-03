@@ -1,31 +1,14 @@
-﻿The Project Gutenberg eBook of Alice's Adventures in Wonderland
-    
-This ebook is for the use of anyone anywhere in the United States and
-
-Release date: June 27, 2008 [eBook #11]
-                Most recently updated: June 26, 2025
-
-Language: English
-
-Credits: Arthur DiBianca and David Widger
+﻿Things before header
 
 
-*** START OF THE PROJECT GUTENBERG EBOOK ALICE'S ADVENTURES IN WONDERLAND ***
+*** START OF THE PROJECT GUTENBERG EBOOK smil ***
 
 [Illustration]
-there was a train going from LA to my house, but i wasn't in it, I was hidding in my aquarium.
-there was a train going from LA to my house, but i wasn't in it, I was hidding in my aquarium.
-ho ho aquarium in my house I have, maybe come to play you should. i don't live in LA though
-NAY NAY
+
+There was a train going from LA to my house, but I wasn't in it, I was hidding in my aquarium.
+!Ho ho!, aquarium in my house I have, maybe come to play you should. i don't live in LA though. - NAY NAY
 
 *** END OF THE PROJECT GUTENBERG EBOOK ALICE'S ADVENTURES IN WONDERLAND ***
 
 
-    
-
-Updated editions will replace the previous one—the old editions will
-be renamed.
-
-Creating the works from print editions not protected by U.S. copyright
-law means that no one owns a United States copyright in these works,
-so the Foundation (and you!) can copy and distribute it in the United
+Things after header
