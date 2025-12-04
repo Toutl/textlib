@@ -29,6 +29,12 @@ public class Corpus {
     }
 
     public void add(Document newDocument) {
+        for (Document doc : this.getDocuments()) {
+            if (doc.isCleaned() || doc.isVectorized()) {
+                System.err.println("Can't add to Corpus already in process");
+                return;
+            }
+        }
         documents.add(newDocument);
     }
 
@@ -41,6 +47,11 @@ public class Corpus {
         Corpus merged = new Corpus();
 
         for (Corpus corpus : new Corpus[] { c1, c2 }) {
+            if (corpus.hasVocabulary()) {
+                System.err.println("Can't combine Corpus already in process: " + corpus);
+                return null;
+            }
+
             for (Document doc : corpus.getDocuments()) {
                 merged.add(doc);
             }

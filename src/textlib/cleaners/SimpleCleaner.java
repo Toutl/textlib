@@ -16,10 +16,10 @@ import textlib.models.Document;
 
 public class SimpleCleaner implements Cleaner {
 
-    private boolean fromGutenberg = true;
-    private boolean withWordRemoval = true;
-    private Language language = Language.ENGLISH;
-    private Set<String> stopWords = null;
+    protected boolean fromGutenberg = true;
+    protected boolean withWordRemoval = true;
+    protected Language language = Language.ENGLISH;
+    protected Set<String> stopWords = null;
 
     public SimpleCleaner() {
     }
@@ -64,7 +64,7 @@ public class SimpleCleaner implements Cleaner {
         document.setUniqueTerms(this.calculateUnique(cleaned));
     }
 
-    private String removeGutenbergWrappers(String txt) {
+    protected String removeGutenbergWrappers(String txt) {
         String beginningPattern = "(?s)^.*?\\*\\*\\* START OF THE PROJECT GUTENBERG EBOOK .*? \\*\\*\\*";
         String endingPattern = "(?s)\\*\\*\\* END OF THE PROJECT GUTENBERG EBOOK .*$";
 
@@ -75,7 +75,7 @@ public class SimpleCleaner implements Cleaner {
         return replaced;
     }
 
-    private String removeCommonWords(String txt) {
+    protected String removeCommonWords(String txt) {
         this.loadStopWords();
 
         for (String word : this.stopWords) {
@@ -86,7 +86,7 @@ public class SimpleCleaner implements Cleaner {
         return txt;
     }
 
-    private void loadStopWords() {
+    protected void loadStopWords() {
 
         if (this.stopWords != null)
             return;
